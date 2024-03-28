@@ -8,6 +8,31 @@ const icon = (name) => (
 
 const navConfig = [
   {
+    title: '스트리머',
+    path: '/streamer',
+    icon: icon('ic_user'),
+  },
+  {
+    title: '치즈 봇',
+    path: '/cheesebot',
+    icon: icon('ic_user'),
+  },
+  {
+    title: '스트리머 게시판',
+    path: '/streamerBoard',
+    icon: icon('ic_user'),
+  },
+  {
+    title: '악질 유저 목록',
+    path: '/streamerQuestion',
+    icon: icon('ic_user'),
+  },
+  {
+    title: '회장님 목록',
+    path: '/streamerQuestion',
+    icon: icon('ic_user'),
+  },
+  {
     title: 'dashboard',
     path: '/',
     icon: icon('ic_analytics'),
@@ -22,21 +47,21 @@ const navConfig = [
     path: '/products',
     icon: icon('ic_cart'),
   },
-  {
-    title: 'blog',
-    path: '/blog',
-    icon: icon('ic_blog'),
-  },
-  {
-    title: 'login',
-    path: '/login',
-    icon: icon('ic_lock'),
-  },
-  {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic_disabled'),
-  },
+  // {
+  //   title: 'blog',
+  //   path: '/blog',
+  //   icon: icon('ic_blog'),
+  // },
+  // {
+  //   title: 'login',
+  //   path: '/login',
+  //   icon: icon('ic_lock'),
+  // },
+  // {
+  //   title: 'Not found',
+  //   path: '/404',
+  //   icon: icon('ic_disabled'),
+  // },
 ];
 
 export default navConfig;

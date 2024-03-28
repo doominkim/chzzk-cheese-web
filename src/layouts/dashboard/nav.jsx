@@ -37,7 +37,7 @@ export default function Nav({ openNav, onCloseNav }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  const renderAccount = (
+  const renderBanner = (
     <Box
       sx={{
         my: 3,
@@ -112,7 +112,7 @@ export default function Nav({ openNav, onCloseNav }) {
     >
       <Logo sx={{ mt: 3, ml: 4 }} />
 
-      {renderAccount}
+      {renderBanner}
 
       {renderMenu}
 
