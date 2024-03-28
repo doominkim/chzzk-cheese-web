@@ -5,4 +5,3 @@ export const account = {
   email: 'kimduumin@gmail.com',
   photoURL: '/assets/images/avatars/avatar_9.jpg',
 };
-git@github.com-private:doominkim/chzzk-cheese-web.git
