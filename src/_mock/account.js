@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------
 
 export const account = {
-  displayName: '스트리머 등록 요청',
+  displayName: 'kimduumin@gmail.com',
   email: 'kimduumin@gmail.com',
   photoURL: '/assets/images/avatars/avatar_9.jpg',
 };

@@ -73,20 +73,27 @@ export default function Nav({ openNav, onCloseNav }) {
   const renderUpgrade = (
     <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
       <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
-        <Box
+        {/* <Box
           component="img"
-          src="/assets/illustrations/illustration_avatar.png"
+          src="https://avatars.githubusercontent.com/u/55569343?v=4"
           sx={{ width: 100, position: 'absolute', top: -50 }}
-        />
+        /> */}
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h6">Get more?</Typography>
+          <Typography variant="h6" sx={{ fontSize: 12 }}>
+            PINGPONG STUDIO
+          </Typography>
 
-          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-            From only $69
+          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1, fontSize: 12 }}>
+            후원 : 카카오뱅크 3333-020168276 / 김두민
+          </Typography>
+
+          <Typography variant="body2" sx={{ mt: 1, fontSize: 11 }}>
+            Copyright PINGPONG STUDIO <br />
+            All rights reserved.
           </Typography>
         </Box>
-
+        {/* 
         <Button
           href="https://material-ui.com/store/items/minimal-dashboard/"
           target="_blank"
@@ -94,7 +101,7 @@ export default function Nav({ openNav, onCloseNav }) {
           color="inherit"
         >
           Upgrade to Pro
-        </Button>
+        </Button> */}
       </Stack>
     </Box>
   );
@@ -112,7 +119,7 @@ export default function Nav({ openNav, onCloseNav }) {
     >
       <Logo sx={{ mt: 3, ml: 4 }} />
 
-      {renderBanner}
+      {/* {renderBanner} */}
 
       {renderMenu}
 

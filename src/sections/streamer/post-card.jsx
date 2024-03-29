@@ -18,16 +18,20 @@ import SvgColor from 'src/components/svg-color';
 // ----------------------------------------------------------------------
 
 export default function PostCard({ post, index }) {
-  const { cover, title, view, comment, share, author, createdAt } = post;
-
-  const latestPostLarge = index === 0;
-
-  const latestPost = index === 1 || index === 2;
+  const {
+    channelDescription,
+    channelId,
+    channelImageUrl,
+    channelName,
+    channelType,
+    followerCount,
+    openLive,
+  } = post;
 
   const renderAvatar = (
     <Avatar
-      alt={author.name}
-      src={author.avatarUrl}
+      alt={channelName}
+      src={channelImageUrl}
       sx={{
         zIndex: 9,
         width: 32,
@@ -35,13 +39,6 @@ export default function PostCard({ post, index }) {
         position: 'absolute',
         left: (theme) => theme.spacing(3),
         bottom: (theme) => theme.spacing(-2),
-        ...((latestPostLarge || latestPost) && {
-          zIndex: 9,
-          top: 24,
-          left: 24,
-          width: 40,
-          height: 40,
-        }),
       }}
     />
   );
@@ -57,13 +54,9 @@ export default function PostCard({ post, index }) {
         WebkitLineClamp: 2,
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
-        ...(latestPostLarge && { typography: 'h5', height: 60 }),
-        ...((latestPostLarge || latestPost) && {
-          color: 'common.white',
-        }),
       }}
     >
-      {title}
+      {channelDescription}
     </Link>
   );
 
@@ -79,20 +72,11 @@ export default function PostCard({ post, index }) {
       }}
     >
       {[
-        { number: comment, icon: 'eva:message-circle-fill' },
-        { number: view, icon: 'eva:eye-fill' },
-        { number: share, icon: 'eva:share-fill' },
+        { number: 1, icon: 'eva:message-circle-fill' },
+        { number: followerCount, icon: 'eva:eye-fill' },
+        // { number: 3, icon: 'eva:share-fill' },
       ].map((info, _index) => (
-        <Stack
-          key={_index}
-          direction="row"
-          sx={{
-            ...((latestPostLarge || latestPost) && {
-              opacity: 0.48,
-              color: 'common.white',
-            }),
-          }}
-        >
+        <Stack key={_index} direction="row">
           <Iconify width={16} icon={info.icon} sx={{ mr: 0.5 }} />
           <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
         </Stack>
@@ -103,8 +87,8 @@ export default function PostCard({ post, index }) {
   const renderCover = (
     <Box
       component="img"
-      alt={title}
-      src={cover}
+      alt={channelImageUrl}
+      src={channelImageUrl}
       sx={{
         top: 0,
         width: 1,
@@ -122,13 +106,9 @@ export default function PostCard({ post, index }) {
       sx={{
         mb: 2,
         color: 'text.disabled',
-        ...((latestPostLarge || latestPost) && {
-          opacity: 0.48,
-          color: 'common.white',
-        }),
       }}
     >
-      {fDate(createdAt)}
+      created 2024-01-01
     </Typography>
   );
 
@@ -141,35 +121,18 @@ export default function PostCard({ post, index }) {
         zIndex: 9,
         bottom: -15,
         position: 'absolute',
-        ...((latestPostLarge || latestPost) && { display: 'none' }),
+        // ...((latestPostLarge || latestPost) && { display: 'none' }),
       }}
     />
   );
 
   return (
-    <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
+    <Grid xs={12} sm={6} md={3}>
       <Card>
         <Box
           sx={{
             position: 'relative',
             pt: 'calc(100% * 3 / 4)',
-            ...((latestPostLarge || latestPost) && {
-              pt: 'calc(100% * 4 / 3)',
-              '&:after': {
-                top: 0,
-                content: "''",
-                width: '100%',
-                height: '100%',
-                position: 'absolute',
-                bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
-              },
-            }),
-            ...(latestPostLarge && {
-              pt: {
-                xs: 'calc(100% * 4 / 3)',
-                sm: 'calc(100% * 3 / 4.66)',
-              },
-            }),
           }}
         >
           {renderShape}
@@ -182,11 +145,6 @@ export default function PostCard({ post, index }) {
         <Box
           sx={{
             p: (theme) => theme.spacing(4, 3, 3, 3),
-            ...((latestPostLarge || latestPost) && {
-              width: 1,
-              bottom: 0,
-              position: 'absolute',
-            }),
           }}
         >
           {renderDate}

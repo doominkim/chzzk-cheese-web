@@ -8,45 +8,45 @@ const icon = (name) => (
 
 const navConfig = [
   {
-    title: '스트리머',
-    path: '/streamer',
+    title: '스트리머 종합평가',
+    path: '/streamer-list',
     icon: icon('ic_user'),
   },
-  {
-    title: '치즈 봇',
-    path: '/cheesebot',
-    icon: icon('ic_user'),
-  },
-  {
-    title: '스트리머 게시판',
-    path: '/streamerBoard',
-    icon: icon('ic_user'),
-  },
-  {
-    title: '악질 유저 목록',
-    path: '/streamerQuestion',
-    icon: icon('ic_user'),
-  },
-  {
-    title: '회장님 목록',
-    path: '/streamerQuestion',
-    icon: icon('ic_user'),
-  },
-  {
-    title: 'dashboard',
-    path: '/',
-    icon: icon('ic_analytics'),
-  },
-  {
-    title: 'user',
-    path: '/user',
-    icon: icon('ic_user'),
-  },
-  {
-    title: 'product',
-    path: '/products',
-    icon: icon('ic_cart'),
-  },
+  // {
+  //   title: '치즈 봇',
+  //   path: '/cheesebot',
+  //   icon: icon('ic_user'),
+  // },
+  // {
+  //   title: '스트리머 게시판',
+  //   path: '/streamerBoard',
+  //   icon: icon('ic_user'),
+  // },
+  // {
+  //   title: '악질 유저 목록',
+  //   path: '/streamerQuestion',
+  //   icon: icon('ic_user'),
+  // },
+  // {
+  //   title: '회장님 목록',
+  //   path: '/streamerQuestion',
+  //   icon: icon('ic_user'),
+  // },
+  // {
+  //   title: 'dashboard',
+  //   path: '/',
+  //   icon: icon('ic_analytics'),
+  // },
+  // {
+  //   title: 'user',
+  //   path: '/user',
+  //   icon: icon('ic_user'),
+  // },
+  // {
+  //   title: 'product',
+  //   path: '/products',
+  //   icon: icon('ic_cart'),
+  // },
   // {
   //   title: 'blog',
   //   path: '/blog',

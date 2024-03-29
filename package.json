@@ -29,6 +29,7 @@
     "@nivo/calendar": "^0.85.1",
     "@nivo/core": "^0.85.1",
     "apexcharts": "^3.43.0",
+    "axios": "^1.6.8",
     "date-fns": "^2.30.0",
     "history": "^5.3.0",
     "lodash": "^4.17.21",

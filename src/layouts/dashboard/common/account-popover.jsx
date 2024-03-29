@@ -65,6 +65,7 @@ export default function AccountPopover() {
           }}
         >
           {account.displayName.charAt(0).toUpperCase()}
+          {account.email}
         </Avatar>
       </IconButton>
 
