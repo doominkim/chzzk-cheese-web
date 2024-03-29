@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
+import { useRouter } from 'src/routes/hooks';
+
 import { posts } from 'src/_mock/blog';
 
 import Iconify from 'src/components/iconify';
@@ -33,8 +35,6 @@ export default function StreamerListView() {
     };
     fetchData();
   }, []);
-
-  console.log(channels);
 
   return (
     <Container>

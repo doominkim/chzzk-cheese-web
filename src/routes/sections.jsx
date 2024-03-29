@@ -10,6 +10,7 @@ export const LoginPage = lazy(() => import('src/pages/login'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 export const StreamerListPage = lazy(() => import('src/pages/streamer/list'));
+export const StreamerDetailPage = lazy(() => import('src/pages/streamer/detail'));
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +30,7 @@ export default function Router() {
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
         { path: 'streamer-list', element: <StreamerListPage /> },
+        { path: 'streamer-detail/:channelId', element: <StreamerDetailPage /> },
       ],
     },
     {

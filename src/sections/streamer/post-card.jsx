@@ -15,9 +15,13 @@ import { fShortenNumber } from 'src/utils/format-number';
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 
+import { useRouter } from 'src/routes/hooks';
+
 // ----------------------------------------------------------------------
 
 export default function PostCard({ post, index }) {
+  const router = useRouter();
+
   const {
     channelDescription,
     channelId,
@@ -27,6 +31,10 @@ export default function PostCard({ post, index }) {
     followerCount,
     openLive,
   } = post;
+
+  const handleClick = () => {
+    router.push(`/streamer-detail/${channelId}`);
+  };
 
   const renderAvatar = (
     <Avatar
@@ -55,6 +63,7 @@ export default function PostCard({ post, index }) {
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
       }}
+      onClick={handleClick}
     >
       {channelDescription}
     </Link>

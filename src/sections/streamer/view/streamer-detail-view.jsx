@@ -1,10 +1,12 @@
 import { faker } from '@faker-js/faker';
+import { useParams } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import Iconify from 'src/components/iconify';
+import { ResponsiveCalendar } from '@nivo/calendar';
 
 import AppTasks from '../app-tasks';
 import AppNewsUpdate from '../app-news-update';
@@ -15,10 +17,14 @@ import AppWidgetSummary from '../app-widget-summary';
 import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
 import AppConversionRates from '../app-conversion-rates';
+import AppCalendar from '../app-calendar';
 
 // ----------------------------------------------------------------------
 
-export default function AppView() {
+export default function StreamerDetailView() {
+  const { channelId } = useParams();
+  console.log(channelId);
+
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
@@ -223,6 +229,10 @@ export default function AppView() {
               { id: '5', name: 'Sprint Showcase' },
             ]}
           />
+        </Grid>
+
+        <Grid xs={12}>
+          <AppCalendar />
         </Grid>
       </Grid>
     </Container>
