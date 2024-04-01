@@ -80,13 +80,13 @@ export default function Nav({ openNav, onCloseNav }) {
         /> */}
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ fontSize: 12 }}>
+          {/* <Typography variant="h6" sx={{ fontSize: 12 }}>
             PINGPONG STUDIO
           </Typography>
 
           <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1, fontSize: 12 }}>
             후원 : 카카오뱅크 3333-020168276 / 김두민
-          </Typography>
+          </Typography> */}
 
           <Typography variant="body2" sx={{ mt: 1, fontSize: 11 }}>
             Copyright PINGPONG STUDIO <br />

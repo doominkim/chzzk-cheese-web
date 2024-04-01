@@ -76,30 +76,30 @@
     // unused-imports
     // https://www.npmjs.com/package/eslint-plugin-unused-imports
     "unused-imports/no-unused-imports": "off",
-    "unused-imports/no-unused-vars": "off",
+    "unused-imports/no-unused-vars": "off"
     // perfectionist
     // https://eslint-plugin-perfectionist.azat.io/
-    "perfectionist/sort-named-imports": [
-      1,
-      {
-        "order": "asc",
-        "type": "line-length"
-      }
-    ],
-    "perfectionist/sort-named-exports": [
-      1,
-      {
-        "order": "asc",
-        "type": "line-length"
-      }
-    ],
-    "perfectionist/sort-exports": [
-      1,
-      {
-        "order": "asc",
-        "type": "line-length"
-      }
-    ],
-    "perfectionist/sort-imports": "off"
+    // "perfectionist/sort-named-imports": [
+    //   1,
+    //   {
+    //     "order": "asc",
+    //     "type": "line-length"
+    //   }
+    // ],
+    // "perfectionist/sort-named-exports": [
+    //   1,
+    //   {
+    //     "order": "asc",
+    //     "type": "line-length"
+    //   }
+    // ],
+    // "perfectionist/sort-exports": [
+    //   1,
+    //   {
+    //     "order": "asc",
+    //     "type": "line-length"
+    //   }
+    // ],
+    // "perfectionist/sort-imports": "off"
   }
 }

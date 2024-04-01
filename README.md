@@ -44,3 +44,6 @@ Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-k
 ## Contact us
 
 Email: support@minimals.cc
+
+if you cannot "npm install"
+https://github.com/Automattic/node-canvas

@@ -6,8 +6,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import Iconify from 'src/components/iconify';
-import { ResponsiveCalendar } from '@nivo/calendar';
-
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 import AppTasks from '../app-tasks';
 import AppNewsUpdate from '../app-news-update';
 import AppOrderTimeline from '../app-order-timeline';
@@ -18,6 +18,7 @@ import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
 import AppConversionRates from '../app-conversion-rates';
 import AppCalendar from '../app-calendar';
+import StreamerProfileCard from '../streamer-profile-card';
 
 // ----------------------------------------------------------------------
 
@@ -34,10 +35,10 @@ export default function StreamerDetailView() {
       <Grid container spacing={3}>
         <Grid xs={12} md={4} lg={3}>
           <AppOrderTimeline
-            title="오늘의 활동내역"
-            list={[...Array(3)].map((_, index) => ({
+            title="최근 활동내역"
+            list={[...Array(2)].map((_, index) => ({
               id: faker.string.uuid(),
-              title: ['림월드', 'Just Chatting', 'StartCraft'][index],
+              title: ['Shadow Corridor 2 雨ノ四葩', 'Chatting'][index],
               type: `order${index + 1}`,
               time: faker.date.past(),
             }))}
@@ -45,20 +46,12 @@ export default function StreamerDetailView() {
         </Grid>
 
         <Grid xs={12} md={8} lg={9}>
-          <AppOrderTimeline
-            title="오늘의 활동내역"
-            list={[...Array(3)].map((_, index) => ({
-              id: faker.string.uuid(),
-              title: ['림월드', 'Just Chatting', 'StartCraft'][index],
-              type: `order${index + 1}`,
-              time: faker.date.past(),
-            }))}
-          />
+          <StreamerProfileCard />
         </Grid>
 
-        {/* <Grid xs={12} sm={6} md={3}>
+        <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Weekly Sales"
+            title="총 방송시간"
             total={714000}
             color="success"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
@@ -67,7 +60,7 @@ export default function StreamerDetailView() {
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="New Users"
+            title="최근 방송일"
             total={1352831}
             color="info"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
@@ -76,7 +69,7 @@ export default function StreamerDetailView() {
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Item Orders"
+            title="최대 방송시간"
             total={1723315}
             color="warning"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
@@ -85,14 +78,14 @@ export default function StreamerDetailView() {
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Bug Reports"
-            total={234}
+            title="평균 방송시간"
+            total={100}
             color="error"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
-        </Grid> */}
+        </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AppWebsiteVisits
             title="Website Visits"
             subheader="(+43%) than last year"
@@ -146,24 +139,20 @@ export default function StreamerDetailView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
         <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
-            title="Conversion Rates"
-            subheader="(+43%) than last year"
+            title="가장 많은 채팅패턴"
+            subheader="2024-01-01 ~ 2024-04-01"
             chart={{
               series: [
-                { label: 'Italy', value: 400 },
-                { label: 'Japan', value: 430 },
-                { label: 'China', value: 448 },
-                { label: 'Canada', value: 470 },
-                { label: 'France', value: 540 },
-                { label: 'Germany', value: 580 },
-                { label: 'South Korea', value: 690 },
-                { label: 'Netherlands', value: 1100 },
-                { label: 'United States', value: 1200 },
-                { label: 'United Kingdom', value: 1380 },
+                { label: 'ㄸㅇ', value: 400 },
+                { label: '^^7', value: 430 },
+                { label: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ', value: 690 },
+                { label: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ', value: 1100 },
+                { label: 'ㄹㅇㅋㅋ', value: 1200 },
+                { label: 'ㄸㅇ', value: 1380 },
               ],
             }}
           />
@@ -171,16 +160,27 @@ export default function StreamerDetailView() {
 
         <Grid xs={12} md={6} lg={4}>
           <AppCurrentSubject
-            title="Current Subject"
+            title="종합게임능력치"
             chart={{
-              categories: ['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math'],
+              categories: [
+                '스펠렁키',
+                '림월드',
+                '소통',
+                'StarCraft',
+                '슈퍼마리오메이커2',
+                '포트나이트',
+              ],
               series: [
-                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
-                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
+                { name: 'Series 1', data: [100, 50, 30, 40, 100, 20] },
+                // { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
+                // { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
               ],
             }}
           />
+        </Grid>
+
+        <Grid xs={12}>
+          <AppCalendar />
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
@@ -194,10 +194,6 @@ export default function StreamerDetailView() {
               postedAt: faker.date.recent(),
             }))}
           />
-        </Grid>
-
-        <Grid xs={12}>
-          <AppCalendar />
         </Grid>
       </Grid>
     </Container>
