@@ -8,25 +8,30 @@ const icon = (name) => (
 
 const navConfig = [
   {
-    title: '스트리머 종합평가',
+    title: '대시보드',
     path: '/streamer-list',
     icon: icon('ic_user'),
   },
-  // {
-  //   title: '치즈 봇',
-  //   path: '/cheesebot',
-  //   icon: icon('ic_user'),
-  // },
+  {
+    title: '채널',
+    path: '/streamer-list',
+    icon: icon('ic_user'),
+  },
+  {
+    title: '치즈 봇',
+    path: '/cheesebot',
+    icon: icon('ic_user'),
+  },
   // {
   //   title: '스트리머 게시판',
   //   path: '/streamerBoard',
   //   icon: icon('ic_user'),
   // },
-  // {
-  //   title: '악질 유저 목록',
-  //   path: '/streamerQuestion',
-  //   icon: icon('ic_user'),
-  // },
+  {
+    title: '악질 유저 목록',
+    path: '/streamerQuestion',
+    icon: icon('ic_user'),
+  },
   // {
   //   title: '회장님 목록',
   //   path: '/streamerQuestion',

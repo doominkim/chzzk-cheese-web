@@ -33,17 +33,8 @@ export default function StreamerDetailView() {
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid xs={12} md={4} lg={5}>
-          <AppOrderTimeline
-            title="최근 활동내역"
-            // list={[...Array(2)].map((_, index) => ({
-            //   id: faker.string.uuid(),
-            //   title: ['Shadow Corridor 2 雨ノ四葩', 'Chatting'][index],
-            //   type: `order${index + 1}`,
-            //   time: faker.date.past(),
-            // }))}
-            channelId={channelId}
-          />
+        <Grid xs={12} md={4} lg={4}>
+          <AppOrderTimeline title="최근 활동내역" channelId={channelId} />
         </Grid>
 
         <Grid xs={12} md={8} lg={9}>
@@ -181,7 +172,7 @@ export default function StreamerDetailView() {
         </Grid>
 
         <Grid xs={12}>
-          <AppCalendar />
+          <AppCalendar channelId={channelId} />
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
