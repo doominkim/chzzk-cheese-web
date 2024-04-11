@@ -5,15 +5,16 @@ import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import { alpha } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
+import Badge from '@mui/material/Badge';
 
-import { fDate } from 'src/utils/format-time';
 import { fShortenNumber } from 'src/utils/format-number';
 
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
+
+import { styled } from '@mui/material';
 
 import { useRouter } from 'src/routes/hooks';
 
@@ -27,9 +28,10 @@ export default function PostCard({ post, index }) {
     channelId,
     channelImageUrl,
     channelName,
-    channelType,
-    followerCount,
+    // channelType,
+    follower,
     openLive,
+    channelLive,
   } = post;
 
   const handleClick = () => {
@@ -81,9 +83,8 @@ export default function PostCard({ post, index }) {
       }}
     >
       {[
-        { number: 1, icon: 'eva:message-circle-fill' },
-        { number: followerCount, icon: 'eva:eye-fill' },
-        // { number: 3, icon: 'eva:share-fill' },
+        { number: follower, icon: 'mdi:person-star' },
+        // { number: follower, icon: 'eva:eye-fill' },
       ].map((info, _index) => (
         <Stack key={_index} direction="row">
           <Iconify width={16} icon={info.icon} sx={{ mr: 0.5 }} />
@@ -117,7 +118,8 @@ export default function PostCard({ post, index }) {
         color: 'text.disabled',
       }}
     >
-      created 2024-01-01
+      {openLive ? 'LIVE' : 'OFFLINE'} - {channelLive.liveTitle}
+      <br /> {channelLive.liveCategory ? channelLive.liveCategory.liveCategoryValue : null}
     </Typography>
   );
 
@@ -156,6 +158,7 @@ export default function PostCard({ post, index }) {
             p: (theme) => theme.spacing(4, 3, 3, 3),
           }}
         >
+          {channelName}
           {renderDate}
 
           {renderTitle}

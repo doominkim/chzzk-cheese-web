@@ -26,12 +26,9 @@ export default function StreamerListView() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get('http://localhost:3000/chzzk/channels/6e06f5e1907f17eff543abd06cb62891')
-        .then((response) => {
-          console.log(response);
-          return response.data;
-        })
-        .then((data) => setChannels([data]));
+        .get('http://localhost:3000/channel')
+        .then((response) => response.data)
+        .then((data) => setChannels(data));
     };
     fetchData();
   }, []);
