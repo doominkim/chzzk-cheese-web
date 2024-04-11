@@ -36,7 +36,7 @@ export default function StreamerListView() {
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">스트리머 종합분석</Typography>
+        <Typography variant="h4">채널</Typography>
 
         {/* <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
           New Post

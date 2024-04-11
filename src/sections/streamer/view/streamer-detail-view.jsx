@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { faker } from '@faker-js/faker';
 import { useParams } from 'react-router-dom';
 
@@ -19,62 +22,25 @@ import AppCurrentSubject from '../app-current-subject';
 import AppConversionRates from '../app-conversion-rates';
 import AppCalendar from '../app-calendar';
 import StreamerProfileCard from '../streamer-profile-card';
+import StreamerDetailCard from '../streamer-detail-card';
 
 // ----------------------------------------------------------------------
 
 export default function StreamerDetailView() {
   const { channelId } = useParams();
-  // console.log(channelId);
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h4" sx={{ mb: 5 }}>
+      {/* <Typography variant="h4" sx={{ mb: 5 }}>
         Hi, Welcome back 👋
-      </Typography>
+      </Typography> */}
 
       <Grid container spacing={3}>
+        <Grid xs={12} md={8} lg={4}>
+          <StreamerDetailCard channelId={channelId} />
+        </Grid>
         <Grid xs={12} md={4} lg={4}>
           <AppOrderTimeline title="최근 활동내역" channelId={channelId} />
-        </Grid>
-
-        <Grid xs={12} md={8} lg={9}>
-          <StreamerProfileCard />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="총 방송시간"
-            total={714000}
-            color="success"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="최근 방송일"
-            total={1352831}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="최대 방송시간"
-            total={1723315}
-            color="warning"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="평균 방송시간"
-            total={100}
-            color="error"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
-          />
         </Grid>
 
         {/* <Grid xs={12} md={6} lg={8}>
@@ -133,7 +99,7 @@ export default function StreamerDetailView() {
           />
         </Grid> */}
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
             title="가장 많은 채팅패턴"
             subheader="2024-01-01 ~ 2024-04-01"
@@ -148,11 +114,12 @@ export default function StreamerDetailView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
+        <Grid xs={12} md={12} lg={4}>
           <AppCurrentSubject
-            title="종합게임능력치"
+            title="스펠렁키 고인물"
+            subheader="고이다 못해 썩어버렸습니다...🥹"
             chart={{
               categories: [
                 '스펠렁키',
@@ -164,10 +131,64 @@ export default function StreamerDetailView() {
               ],
               series: [
                 { name: 'Series 1', data: [100, 50, 30, 40, 100, 20] },
-                // { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
+                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
                 // { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
               ],
             }}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={2} md={2}>
+          <AppWidgetSummary
+            title="총 방송시간"
+            total={714000}
+            color="success"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={2} md={2}>
+          <AppWidgetSummary
+            title="총 방송시간"
+            total={714000}
+            color="success"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={2} md={2}>
+          <AppWidgetSummary
+            title="총 방송시간"
+            total={714000}
+            color="success"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={2} md={2}>
+          <AppWidgetSummary
+            title="최근 방송일"
+            total={1352831}
+            color="info"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={2} md={2}>
+          <AppWidgetSummary
+            title="최대 방송시간"
+            total={1723315}
+            color="warning"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={2} md={2}>
+          <AppWidgetSummary
+            title="평균 방송시간"
+            total={100}
+            color="error"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
         </Grid>
 
@@ -175,7 +196,10 @@ export default function StreamerDetailView() {
           <AppCalendar channelId={channelId} />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        <Grid xs={12} md={12} lg={12}>
+          <StreamerProfileCard />
+        </Grid>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AppNewsUpdate
             title="방명록"
             list={[...Array(5)].map((_, index) => ({
@@ -186,7 +210,7 @@ export default function StreamerDetailView() {
               postedAt: faker.date.recent(),
             }))}
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </Container>
   );

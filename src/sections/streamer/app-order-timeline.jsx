@@ -20,21 +20,16 @@ import axios from 'axios';
 export default function AnalyticsOrderTimeline({ title, subheader, channelId, ...other }) {
   const [list, setList] = useState([]);
 
-  console.log(channelId);
   useEffect(() => {
     const fetchData = async () => {
       await axios
         .get(`http://localhost:3000/channel/${channelId}/recentActivity`)
-        .then((response) => {
-          console.log(response);
-          return response.data;
-        })
+        .then((response) => response.data)
         .then((data) => setList(data));
     };
     fetchData();
   }, [channelId]);
 
-  console.log(list);
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -58,7 +53,6 @@ export default function AnalyticsOrderTimeline({ title, subheader, channelId, ..
 }
 
 AnalyticsOrderTimeline.propTypes = {
-  // list: PropTypes.array,
   subheader: PropTypes.string,
   title: PropTypes.string,
   channelId: PropTypes.string,
