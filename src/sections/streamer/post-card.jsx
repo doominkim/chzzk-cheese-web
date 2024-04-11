@@ -8,13 +8,12 @@ import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
+import Chip from '@mui/material/Chip';
 
 import { fShortenNumber } from 'src/utils/format-number';
 
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
-
-import { styled } from '@mui/material';
 
 import { useRouter } from 'src/routes/hooks';
 
@@ -38,17 +37,38 @@ export default function PostCard({ post, index }) {
     router.push(`/streamer-detail/${channelId}`);
   };
 
+  let boxShadow;
+  if (openLive) {
+    boxShadow = {
+      boxShadow: `inset 0 0 0 2px linear-gradient(to right, #44b700, #00ffa3)`,
+      '&::after': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        // animation: 'ripple 2.0s infinite',
+        border: '2px solid currentColor',
+        content: '""',
+      },
+    };
+  }
+
   const renderAvatar = (
     <Avatar
       alt={channelName}
       src={channelImageUrl}
       sx={{
         zIndex: 9,
-        width: 32,
-        height: 32,
+        width: 50,
+        height: 50,
         position: 'absolute',
         left: (theme) => theme.spacing(3),
         bottom: (theme) => theme.spacing(-2),
+        backgroundColor: '#00ffa3',
+        color: '#00ffa3',
+        boxShadow,
       }}
     />
   );
@@ -118,8 +138,8 @@ export default function PostCard({ post, index }) {
         color: 'text.disabled',
       }}
     >
-      {openLive ? 'LIVE' : 'OFFLINE'} - {channelLive.liveTitle}
-      <br /> {channelLive.liveCategory ? channelLive.liveCategory.liveCategoryValue : null}
+      {channelLive ? channelLive.liveTitle : null}
+      {channelLive && channelLive.liveCategory ? channelLive.liveCategory.liveCategoryValue : null}
     </Typography>
   );
 
@@ -158,11 +178,29 @@ export default function PostCard({ post, index }) {
             p: (theme) => theme.spacing(4, 3, 3, 3),
           }}
         >
-          {channelName}
+          <Stack>
+            {channelName}
+            {channelLive ? (
+              <Chip
+                label={
+                  openLive && channelLive && channelLive.liveCategory
+                    ? channelLive.liveCategory.liveCategoryValue
+                    : 'Offline'
+                }
+                size="small"
+                color="warning"
+                variant="outlined"
+                sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
+              />
+            ) : null}
+
+            {/* {channelLive ? channelLive.liveTitle : null}
+            {channelLive && channelLive.liveCategory
+              ? channelLive.liveCategory.liveCategoryValue
+              : null} */}
+          </Stack>
           {renderDate}
-
           {renderTitle}
-
           {renderInfo}
         </Box>
       </Card>
