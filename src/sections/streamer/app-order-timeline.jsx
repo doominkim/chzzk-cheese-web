@@ -9,12 +9,32 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import Chip from '@mui/material/Chip';
 
 import { fDateTime } from 'src/utils/format-time';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // ----------------------------------------------------------------------
 
-export default function AnalyticsOrderTimeline({ title, subheader, list, ...other }) {
+export default function AnalyticsOrderTimeline({ title, subheader, channelId, ...other }) {
+  const [list, setList] = useState([]);
+
+  console.log(channelId);
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get(`http://localhost:3000/channel/${channelId}/recentActivity`)
+        .then((response) => {
+          console.log(response);
+          return response.data;
+        })
+        .then((data) => setList(data));
+    };
+    fetchData();
+  }, [channelId]);
+
+  console.log(list);
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -30,7 +50,7 @@ export default function AnalyticsOrderTimeline({ title, subheader, list, ...othe
         }}
       >
         {list.map((item, index) => (
-          <OrderItem key={item.id} item={item} lastTimeline={index === list.length - 1} />
+          <OrderItem key={index} item={item} lastTimeline={index === list.length - 1} />
         ))}
       </Timeline>
     </Card>
@@ -38,35 +58,38 @@ export default function AnalyticsOrderTimeline({ title, subheader, list, ...othe
 }
 
 AnalyticsOrderTimeline.propTypes = {
-  list: PropTypes.array,
+  // list: PropTypes.array,
   subheader: PropTypes.string,
   title: PropTypes.string,
+  channelId: PropTypes.string,
 };
 
 // ----------------------------------------------------------------------
 
 function OrderItem({ item, lastTimeline }) {
-  const { type, title, time } = item;
+  const { liveTitle, averageViewers, start, end, liveCategoryValue } = item;
   return (
     <TimelineItem>
       <TimelineSeparator>
-        <TimelineDot
-          color={
-            (type === 'order1' && 'primary') ||
-            (type === 'order2' && 'success') ||
-            (type === 'order3' && 'info') ||
-            (type === 'order4' && 'warning') ||
-            'error'
-          }
-        />
+        <TimelineDot sx={lastTimeline && { border: '2px solid #00ffa3', color: '#00ffa3' }} />
         {lastTimeline ? null : <TimelineConnector />}
       </TimelineSeparator>
 
       <TimelineContent>
-        <Typography variant="subtitle2">{title}</Typography>
+        <Typography variant="subtitle2">
+          <Chip
+            label={liveCategoryValue}
+            size="small"
+            variant="outlined"
+            sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
+          />
+          <br />
+          {lastTimeline}
+          {liveTitle}
+        </Typography>
 
         <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-          {fDateTime(time)}
+          {fDateTime(start, 'MM-dd HH:mm')} {lastTimeline ? null : ` - ${fDateTime(end, 'HH:mm')}`}
         </Typography>
       </TimelineContent>
     </TimelineItem>

@@ -24,7 +24,7 @@ import StreamerProfileCard from '../streamer-profile-card';
 
 export default function StreamerDetailView() {
   const { channelId } = useParams();
-  console.log(channelId);
+  // console.log(channelId);
 
   return (
     <Container maxWidth="xl">
@@ -33,15 +33,16 @@ export default function StreamerDetailView() {
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid xs={12} md={4} lg={3}>
+        <Grid xs={12} md={4} lg={5}>
           <AppOrderTimeline
             title="최근 활동내역"
-            list={[...Array(2)].map((_, index) => ({
-              id: faker.string.uuid(),
-              title: ['Shadow Corridor 2 雨ノ四葩', 'Chatting'][index],
-              type: `order${index + 1}`,
-              time: faker.date.past(),
-            }))}
+            // list={[...Array(2)].map((_, index) => ({
+            //   id: faker.string.uuid(),
+            //   title: ['Shadow Corridor 2 雨ノ四葩', 'Chatting'][index],
+            //   type: `order${index + 1}`,
+            //   time: faker.date.past(),
+            // }))}
+            channelId={channelId}
           />
         </Grid>
 

@@ -192,7 +192,15 @@ export default function PostCard({ post, index }) {
                 variant="outlined"
                 sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
               />
-            ) : null}
+            ) : (
+              <Chip
+                label="Offline"
+                size="small"
+                color="warning"
+                variant="outlined"
+                sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
+              />
+            )}
 
             {/* {channelLive ? channelLive.liveTitle : null}
             {channelLive && channelLive.liveCategory
