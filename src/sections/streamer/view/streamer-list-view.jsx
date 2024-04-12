@@ -38,9 +38,9 @@ export default function StreamerListView() {
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4">채널</Typography>
 
-        {/* <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New Post
-        </Button> */}
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
+          스트리머 등록
+        </Button>
       </Stack>
 
       <Stack mb={3} direction="row" alignItems="center" justifyContent="space-between">

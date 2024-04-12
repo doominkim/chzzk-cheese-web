@@ -17,6 +17,7 @@ import {
   Stack,
   Link,
   Typography,
+  Chip,
 } from '@mui/material';
 import SvgColor from 'src/components/svg-color';
 import { alpha } from '@mui/material/styles';
@@ -41,7 +42,7 @@ export default function StreamerDetailCard({ channelId }) {
   let boxShadow;
   if (channel && channel.openLive) {
     boxShadow = {
-      boxShadow: `inset 0 0 0 2px linear-gradient(to right, #44b700, #00ffa3)`,
+      boxShadow: `0 0 0 2px linear-gradient(to right, #44b700, #00ffa3)`,
       '&::after': {
         position: 'absolute',
         top: 0,
@@ -183,7 +184,11 @@ export default function StreamerDetailCard({ channelId }) {
   );
   return (
     <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
-      <Card>
+      <Card
+        sx={{
+          minHeight: 515,
+        }}
+      >
         <Box
           sx={{
             position: 'relative',
@@ -207,9 +212,7 @@ export default function StreamerDetailCard({ channelId }) {
           }}
         >
           {renderShape}
-
           {renderAvatar}
-
           {renderCover}
         </Box>
 
@@ -222,9 +225,7 @@ export default function StreamerDetailCard({ channelId }) {
           }}
         >
           {renderDate}
-
           {renderTitle}
-
           {renderInfo}
         </Box>
       </Card>

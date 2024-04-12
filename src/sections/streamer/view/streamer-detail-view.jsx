@@ -137,7 +137,7 @@ export default function StreamerDetailView() {
             }}
           />
         </Grid>
-
+        {/* 
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
             title="총 방송시간"
@@ -190,7 +190,7 @@ export default function StreamerDetailView() {
             color="error"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
-        </Grid>
+        </Grid> */}
 
         <Grid xs={12}>
           <AppCalendar channelId={channelId} />

@@ -41,7 +41,7 @@ export default function Header({ onOpenNav }) {
       <Stack direction="row" alignItems="center" spacing={1}>
         {/* <LanguagePopover /> */}
         {/* <NotificationsPopover /> */}
-        {/* <AccountPopover /> */}
+        <AccountPopover />
       </Stack>
     </>
   );

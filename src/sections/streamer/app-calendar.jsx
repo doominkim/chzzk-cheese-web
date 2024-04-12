@@ -29,19 +29,21 @@ export default function AppCalendar({ title, subheader, channelId }) {
 
   return (
     <Card>
-      <CardHeader title="방송시간 분석" subheader="녹두로님의 방송 패턴입니다." sx={{ mb: 0 }} />
+      <CardHeader title="방송패턴" subheader="" sx={{ mb: 0 }} />
       <Box sx={{ height: 300 }}>
         <ResponsiveCalendar
           data={list}
           from="2024-01-01"
-          to="2024-04-01"
-          emptyColor="#eeeeee"
-          colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
-          margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
-          yearSpacing={40}
-          monthBorderColor="#ffffff"
+          to="2024-12-31"
+          emptyColor="#141517"
+          colors={['#FFBF00', '#FF8000', '#FF4000', '#FF0000']}
+          margin={{ top: 0, right: 20, bottom: 0, left: 30 }}
+          yearSpacing={0}
+          yearLegendOffset={8}
+          monthBorderColor="#333"
           dayBorderWidth={2}
-          dayBorderColor="#ffffff"
+          dayBorderColor="#222"
+          tooltip={(n) => {}}
           legends={[
             {
               anchor: 'bottom-right',

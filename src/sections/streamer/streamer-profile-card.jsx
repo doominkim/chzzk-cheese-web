@@ -67,7 +67,7 @@ const schemeCategory10ScaleOrdinal = scaleOrdinal(schemeCategory10);
 export default function StreamerProfileCard() {
   return (
     <Card>
-      <CardHeader title="키워드" subheader="녹두로 - 대한민국 대표앵무스트리머" />
+      <CardHeader title="연관키워드" />
 
       <Divider sx={{ p: 1, borderStyle: 'dashed' }} />
 

@@ -9,17 +9,34 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import Chip from '@mui/material/Chip';
+import Button from '@mui/material/Button';
 
 import { fShortenNumber } from 'src/utils/format-number';
-
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
-
 import { useRouter } from 'src/routes/hooks';
+import { styled } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export default function PostCard({ post, index }) {
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  position: 'absolute', // Badge와 Avatar를 제어하기 위한 컨테이너 설정
+  '& .MuiBadge-badge': {
+    position: 'absolute', // Badge를 컨테이너 기준으로 배치
+    width: 30,
+    fontSize: 10,
+    fontWeight: 600,
+    top: 15, // Badge 상단 가장자리를 Avatar와 일렬로 정렬
+    left: 19, // Badge 오른쪽 가장자리를 Avatar와 일렬로 정렬
+    padding: 0,
+    backgroundColor: '#FF0000', // Badge 색상 설정
+    color: '#fff', // Badge 텍스트 색상 설정
+    borderRadius: 4,
+    zIndex: 10, // Badge가 위에 유지되도록 하십시오.
+  },
+}));
+
+export default function PostCard({ post }) {
   const router = useRouter();
 
   const {
@@ -27,7 +44,6 @@ export default function PostCard({ post, index }) {
     channelId,
     channelImageUrl,
     channelName,
-    // channelType,
     follower,
     openLive,
     channelLive,
@@ -36,24 +52,6 @@ export default function PostCard({ post, index }) {
   const handleClick = () => {
     router.push(`/streamer-detail/${channelId}`);
   };
-
-  let boxShadow;
-  if (openLive) {
-    boxShadow = {
-      boxShadow: `inset 0 0 0 2px linear-gradient(to right, #44b700, #00ffa3)`,
-      '&::after': {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        borderRadius: '50%',
-        // animation: 'ripple 2.0s infinite',
-        border: '2px solid currentColor',
-        content: '""',
-      },
-    };
-  }
 
   const renderAvatar = (
     <Avatar
@@ -66,9 +64,21 @@ export default function PostCard({ post, index }) {
         position: 'absolute',
         left: (theme) => theme.spacing(3),
         bottom: (theme) => theme.spacing(-2),
-        backgroundColor: '#00ffa3',
+        backgroundColor: '#111',
         color: '#00ffa3',
-        boxShadow,
+        ...(openLive
+          ? {
+              boxShadow: `0 0 0 2px #00ffa3`,
+              '&::after': {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+              },
+            }
+          : { filter: 'grayscale(1)' }),
       }}
     />
   );
@@ -129,11 +139,12 @@ export default function PostCard({ post, index }) {
     />
   );
 
-  const renderDate = (
+  const renderDescription = (
     <Typography
-      variant="caption"
+      variant="overline"
       component="div"
       sx={{
+        p: 1,
         mb: 2,
         color: 'text.disabled',
       }}
@@ -152,9 +163,15 @@ export default function PostCard({ post, index }) {
         zIndex: 9,
         bottom: -15,
         position: 'absolute',
-        // ...((latestPostLarge || latestPost) && { display: 'none' }),
       }}
     />
+  );
+
+  const renderButton = (
+    <Stack direction="row">
+      <Button color="secondary">Secondary</Button>
+      <Button color="secondary">Secondary</Button>
+    </Stack>
   );
 
   return (
@@ -167,9 +184,7 @@ export default function PostCard({ post, index }) {
           }}
         >
           {renderShape}
-
-          {renderAvatar}
-
+          {openLive ? <StyledBadge badgeContent="LIVE">{renderAvatar}</StyledBadge> : renderAvatar}
           {renderCover}
         </Box>
 
@@ -179,37 +194,33 @@ export default function PostCard({ post, index }) {
           }}
         >
           <Stack>
-            {channelName}
+            <Typography variant="h6" sx={{ p: 1 }}>
+              {channelName}
+            </Typography>
             {channelLive ? (
               <Chip
                 label={
                   openLive && channelLive && channelLive.liveCategory
                     ? channelLive.liveCategory.liveCategoryValue
-                    : 'Offline'
+                    : '오프라인'
                 }
                 size="small"
-                color="warning"
                 variant="outlined"
-                sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
+                sx={openLive && { border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
               />
             ) : (
               <Chip
-                label="Offline"
+                label="오프라인"
                 size="small"
-                color="warning"
                 variant="outlined"
-                sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
+                sx={openLive && { border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
               />
             )}
-
-            {/* {channelLive ? channelLive.liveTitle : null}
-            {channelLive && channelLive.liveCategory
-              ? channelLive.liveCategory.liveCategoryValue
-              : null} */}
           </Stack>
-          {renderDate}
+          {renderDescription}
           {renderTitle}
           {renderInfo}
+          {renderButton}
         </Box>
       </Card>
     </Grid>
@@ -218,5 +229,4 @@ export default function PostCard({ post, index }) {
 
 PostCard.propTypes = {
   post: PropTypes.object.isRequired,
-  index: PropTypes.number,
 };

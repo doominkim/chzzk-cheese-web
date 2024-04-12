@@ -1,24 +1,25 @@
 import PropTypes from 'prop-types';
 
-import Card from '@mui/material/Card';
 import Timeline from '@mui/lab/Timeline';
 import TimelineDot from '@mui/lab/TimelineDot';
-import Typography from '@mui/material/Typography';
-import CardHeader from '@mui/material/CardHeader';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import Chip from '@mui/material/Chip';
 
+import { Card, CardHeader, Divider, Grid, Box, Typography } from '@mui/material';
+
 import { fDateTime } from 'src/utils/format-time';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Scrollbar from 'src/components/scrollbar';
 
 // ----------------------------------------------------------------------
 
 export default function AnalyticsOrderTimeline({ title, subheader, channelId, ...other }) {
   const [list, setList] = useState([]);
+  const [channel, setChannel] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,24 +31,64 @@ export default function AnalyticsOrderTimeline({ title, subheader, channelId, ..
     fetchData();
   }, [channelId]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get(`http://localhost:3000/channel/${channelId}`)
+        .then((response) => {
+          console.log(response);
+          return response.data;
+        })
+        .then((data) => setChannel(data));
+    };
+    fetchData();
+  }, [channelId, setChannel]);
+
   return (
-    <Card {...other}>
+    <Card
+      {...other}
+      sx={{
+        minHeight: 515,
+      }}
+    >
       <CardHeader title={title} subheader={subheader} />
 
-      <Timeline
-        sx={{
-          m: 0,
-          p: 3,
-          [`& .${timelineItemClasses.root}:before`]: {
-            flex: 0,
-            padding: 0,
-          },
-        }}
-      >
-        {list.map((item, index) => (
-          <OrderItem key={index} item={item} lastTimeline={index === list.length - 1} />
-        ))}
-      </Timeline>
+      <Scrollbar>
+        <Timeline
+          sx={{
+            m: 0,
+            p: 3,
+            [`& .${timelineItemClasses.root}:before`]: {
+              flex: 0,
+              padding: 0,
+            },
+          }}
+        >
+          {list.length > 0 ? (
+            list.map((item, index) => (
+              <OrderItem
+                key={index}
+                item={item}
+                firstTimeLine={index === 0}
+                lastTimeline={index === list.length - 1}
+                openLive={channel.openLive}
+              />
+            ))
+          ) : (
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                verticalAlign: 'middle',
+                height: '100%',
+              }}
+            >
+              최근 활동내역이 존재하지 않습니다 🥹
+            </Box>
+          )}
+        </Timeline>
+      </Scrollbar>
     </Card>
   );
 }
@@ -60,12 +101,20 @@ AnalyticsOrderTimeline.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function OrderItem({ item, lastTimeline }) {
+function OrderItem({ item, firstTimeLine, lastTimeline, openLive }) {
   const { liveTitle, averageViewers, start, end, liveCategoryValue } = item;
   return (
     <TimelineItem>
       <TimelineSeparator>
-        <TimelineDot sx={lastTimeline && { border: '2px solid #00ffa3', color: '#00ffa3' }} />
+        <TimelineDot
+          sx={
+            firstTimeLine &&
+            openLive && {
+              border: '2px solid #00ffa3',
+              color: '#00ffa3',
+            }
+          }
+        />
         {lastTimeline ? null : <TimelineConnector />}
       </TimelineSeparator>
 
@@ -75,7 +124,11 @@ function OrderItem({ item, lastTimeline }) {
             label={liveCategoryValue}
             size="small"
             variant="outlined"
-            sx={{ border: '2px solid #00ffa3', color: '#00ffa3', fontWeight: 600 }}
+            sx={{
+              border: '2px solid #00ffa3',
+              color: '#00ffa3',
+              fontWeight: 600,
+            }}
           />
           <br />
           {lastTimeline}
@@ -83,7 +136,8 @@ function OrderItem({ item, lastTimeline }) {
         </Typography>
 
         <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-          {fDateTime(start, 'MM-dd HH:mm')} {lastTimeline ? null : ` - ${fDateTime(end, 'HH:mm')}`}
+          {fDateTime(start, 'MM-dd HH:mm')}{' '}
+          {firstTimeLine && openLive ? null : ` - ${fDateTime(end, 'MM-dd HH:mm')}`}
         </Typography>
       </TimelineContent>
     </TimelineItem>
@@ -92,5 +146,7 @@ function OrderItem({ item, lastTimeline }) {
 
 OrderItem.propTypes = {
   item: PropTypes.object,
+  firstTimeLine: PropTypes.bool,
   lastTimeline: PropTypes.bool,
+  openLive: PropTypes.bool,
 };
