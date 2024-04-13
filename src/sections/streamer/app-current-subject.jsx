@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -26,10 +28,36 @@ const StyledChart = styled(Chart)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function AppCurrentSubject({ title, subheader, chart, ...other }) {
+export default function AppCurrentSubject({ title, subheader, channelId, chart, ...other }) {
   const theme = useTheme();
+  const [ranks, setRanks] = useState([]);
 
-  const { series, colors, categories, options } = chart;
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get(`http://localhost:3000/channel/${channelId}/liveCategoryRank`)
+        .then((response) => response.data)
+        .then((data) => setRanks(data));
+    };
+    fetchData();
+  }, [channelId]);
+
+  const [series, setSeries] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const emptyLiveCategory = [];
+    const emptyLiveCategoryValue = [];
+    ranks.forEach((rank) => {
+      emptyLiveCategory.push(rank.count);
+      emptyLiveCategoryValue.push(rank.liveCategoryValue);
+    });
+
+    setSeries(emptyLiveCategory);
+    setCategories(emptyLiveCategoryValue);
+  }, [ranks]);
+
+  const { colors, options } = chart;
 
   const chartOptions = useChart({
     colors,
@@ -57,15 +85,20 @@ export default function AppCurrentSubject({ title, subheader, chart, ...other })
 
   return (
     <Card {...other}>
+      <CardHeader title={title} subheader={subheader} sx={{ mb: 5 }} />
+
       <StyledChart
         dir="ltr"
         type="radar"
-        series={series}
+        series={[
+          {
+            data: series,
+          },
+        ]}
         options={chartOptions}
         width="100%"
         height={340}
       />
-      <CardHeader title={title} subheader={subheader} sx={{ mb: 5 }} />
     </Card>
   );
 }
@@ -74,4 +107,5 @@ AppCurrentSubject.propTypes = {
   chart: PropTypes.object,
   subheader: PropTypes.string,
   title: PropTypes.string,
+  channelId: PropTypes.string,
 };

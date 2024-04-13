@@ -35,14 +35,11 @@ export default function AnalyticsOrderTimeline({ title, subheader, channelId, ..
     const fetchData = async () => {
       await axios
         .get(`http://localhost:3000/channel/${channelId}`)
-        .then((response) => {
-          console.log(response);
-          return response.data;
-        })
+        .then((response) => response.data)
         .then((data) => setChannel(data));
     };
     fetchData();
-  }, [channelId, setChannel]);
+  }, [channelId]);
 
   return (
     <Card
@@ -102,17 +99,19 @@ AnalyticsOrderTimeline.propTypes = {
 // ----------------------------------------------------------------------
 
 function OrderItem({ item, firstTimeLine, lastTimeline, openLive }) {
-  const { liveTitle, averageViewers, start, end, liveCategoryValue } = item;
+  const { liveTitle, start, end, liveCategoryValue } = item;
+
   return (
     <TimelineItem>
       <TimelineSeparator>
         <TimelineDot
           sx={
-            firstTimeLine &&
-            openLive && {
-              border: '2px solid #00ffa3',
-              color: '#00ffa3',
-            }
+            firstTimeLine && openLive
+              ? {
+                  border: '2px solid #00ffa3',
+                  color: '#00ffa3',
+                }
+              : null
           }
         />
         {lastTimeline ? null : <TimelineConnector />}
@@ -120,16 +119,29 @@ function OrderItem({ item, firstTimeLine, lastTimeline, openLive }) {
 
       <TimelineContent>
         <Typography variant="subtitle2">
-          <Chip
-            label={liveCategoryValue}
-            size="small"
-            variant="outlined"
-            sx={{
-              border: '2px solid #00ffa3',
-              color: '#00ffa3',
-              fontWeight: 600,
-            }}
-          />
+          {liveCategoryValue ? (
+            <Chip
+              label={liveCategoryValue}
+              size="small"
+              variant="outlined"
+              sx={{
+                border: '2px solid #00ffa3',
+                color: '#00ffa3',
+                fontWeight: 600,
+              }}
+            />
+          ) : (
+            <Chip
+              label="미선택"
+              size="small"
+              variant="outlined"
+              sx={{
+                border: '2px solid #333',
+                color: '#fff',
+                fontWeight: 600,
+              }}
+            />
+          )}
           <br />
           {lastTimeline}
           {liveTitle}

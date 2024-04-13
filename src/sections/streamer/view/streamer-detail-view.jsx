@@ -31,9 +31,9 @@ export default function StreamerDetailView() {
 
   return (
     <Container maxWidth="xl">
-      {/* <Typography variant="h4" sx={{ mb: 5 }}>
-        Hi, Welcome back 👋
-      </Typography> */}
+      <Typography variant="h4" sx={{ mb: 5 }}>
+        {/* 강소연님의 종합보고서 */}
+      </Typography>
 
       <Grid container spacing={3}>
         <Grid xs={12} md={8} lg={4}>
@@ -118,20 +118,21 @@ export default function StreamerDetailView() {
 
         <Grid xs={12} md={12} lg={4}>
           <AppCurrentSubject
-            title="스펠렁키 고인물"
-            subheader="고이다 못해 썩어버렸습니다...🥹"
+            channelId={channelId}
+            title="종합게임능력치"
+            // subheader="고이다 못해 썩어버렸습니다...🥹"
             chart={{
               categories: [
-                '스펠렁키',
-                '림월드',
-                '소통',
-                'StarCraft',
-                '슈퍼마리오메이커2',
-                '포트나이트',
+                // '스펠렁키',
+                // '림월드',
+                // '소통',
+                // 'StarCraft',
+                // '슈퍼마리오메이커2',
+                // '포트나이트',
               ],
               series: [
-                { name: 'Series 1', data: [100, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
+                // { name: 'Series 1', data: [100, 50, 30, 40, 100, 20] },
+                // { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
                 // { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
               ],
             }}

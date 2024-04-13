@@ -16,16 +16,11 @@ export default function AppCalendar({ title, subheader, channelId }) {
     const fetchData = async () => {
       await axios
         .get(`http://localhost:3000/channel/${channelId}/calendar`)
-        .then((response) => {
-          console.log(response);
-          return response.data;
-        })
+        .then((response) => response.data)
         .then((data) => setList(data));
     };
     fetchData();
   }, [channelId]);
-
-  console.log(list);
 
   return (
     <Card>
@@ -36,14 +31,15 @@ export default function AppCalendar({ title, subheader, channelId }) {
           from="2024-01-01"
           to="2024-12-31"
           emptyColor="#141517"
-          colors={['#FFBF00', '#FF8000', '#FF4000', '#FF0000']}
+          colors={['#0B6120', '#078A07', '#04B530', '#00DF39']}
           margin={{ top: 0, right: 20, bottom: 0, left: 30 }}
           yearSpacing={0}
           yearLegendOffset={8}
           monthBorderColor="#333"
           dayBorderWidth={2}
           dayBorderColor="#222"
-          tooltip={(n) => {}}
+          tooltip={(n) => `${n.day}`}
+          monthLegend={(_year, month) => `${month + 1}월 `}
           legends={[
             {
               anchor: 'bottom-right',
@@ -56,6 +52,9 @@ export default function AppCalendar({ title, subheader, channelId }) {
               itemDirection: 'right-to-left',
             },
           ]}
+          theme={{
+            labels: { text: { fill: '#fff', fontSize: 15, fontWeight: 600 } },
+          }}
         />
       </Box>
     </Card>

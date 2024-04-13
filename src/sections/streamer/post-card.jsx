@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 
 import { fShortenNumber } from 'src/utils/format-number';
 import Iconify from 'src/components/iconify';
@@ -48,6 +49,10 @@ export default function PostCard({ post }) {
     openLive,
     channelLive,
   } = post;
+
+  const moveChzzk = () => {
+    window.location.href = `https://chzzk.naver.com/live/${channelId}`;
+  };
 
   const handleClick = () => {
     router.push(`/streamer-detail/${channelId}`);
@@ -95,7 +100,6 @@ export default function PostCard({ post }) {
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
       }}
-      onClick={handleClick}
     >
       {channelDescription}
     </Link>
@@ -168,9 +172,33 @@ export default function PostCard({ post }) {
   );
 
   const renderButton = (
-    <Stack direction="row">
-      <Button color="secondary">Secondary</Button>
-      <Button color="secondary">Secondary</Button>
+    <Stack direction="row" justify-content="space-between" sx={{ pt: 2 }}>
+      <Button
+        variant="outlined"
+        startIcon={<Iconify width={16} icon="mdi:tv" />}
+        sx={{
+          // px: 0.5,
+          fontSize: 12,
+          fontWeight: 600,
+          border: '2px solid',
+        }}
+        onClick={moveChzzk}
+      >
+        바로가기
+      </Button>
+      <Button
+        variant="outlined"
+        endIcon={<Iconify width={16} icon="mdi:arrow-right" />}
+        sx={{
+          ml: 1,
+          fontSize: 12,
+          fontWeight: 600,
+          border: '2px solid',
+        }}
+        onClick={handleClick}
+      >
+        방송현황
+      </Button>
     </Stack>
   );
 

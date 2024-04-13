@@ -30,10 +30,7 @@ export default function StreamerDetailCard({ channelId }) {
     const fetchData = async () => {
       await axios
         .get(`http://localhost:3000/channel/${channelId}`)
-        .then((response) => {
-          console.log(response);
-          return response.data;
-        })
+        .then((response) => response.data)
         .then((data) => setChannel(data));
     };
     fetchData();
@@ -183,7 +180,7 @@ export default function StreamerDetailCard({ channelId }) {
     />
   );
   return (
-    <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
+    <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3} item>
       <Card
         sx={{
           minHeight: 515,

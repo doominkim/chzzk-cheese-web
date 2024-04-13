@@ -1,5 +1,5 @@
 import SvgColor from 'src/components/svg-color';
-
+import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 const icon = (name) => (
@@ -10,12 +10,12 @@ const navConfig = [
   {
     title: '대시보드',
     path: '/streamer-list',
-    icon: icon('ic_user'),
+    icon: <Iconify icon="mdi-account-alert" sx={{ width: '100%', height: '100%' }} />,
   },
   {
     title: '채널',
     path: '/streamer-list',
-    icon: icon('ic_user'),
+    icon: icon('ic_analytics'),
   },
   {
     title: '치즈 봇',
@@ -27,11 +27,11 @@ const navConfig = [
   //   path: '/streamerBoard',
   //   icon: icon('ic_user'),
   // },
-  {
-    title: '악질 유저 목록',
-    path: '/streamerQuestion',
-    icon: icon('ic_user'),
-  },
+  // {
+  //   title: '악질 유저 목록',
+  //   path: '/streamerQuestion',
+  //   icon: icon('ic_user'),
+  // },
   // {
   //   title: '회장님 목록',
   //   path: '/streamerQuestion',
