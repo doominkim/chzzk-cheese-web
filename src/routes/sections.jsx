@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import DashboardLayout from 'src/layouts/dashboard';
+import { NaverLoginView } from 'src/sections/naver-login';
 
 export const IndexPage = lazy(() => import('src/pages/app'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
@@ -31,6 +32,7 @@ export default function Router() {
         { path: 'blog', element: <BlogPage /> },
         { path: 'streamer-list', element: <StreamerListPage /> },
         { path: 'streamer-detail/:channelId', element: <StreamerDetailPage /> },
+        { path: 'auth/naverLogin', element: <NaverLoginView /> },
       ],
     },
     {

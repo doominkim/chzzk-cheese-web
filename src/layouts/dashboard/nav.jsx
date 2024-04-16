@@ -20,6 +20,7 @@ import { account } from 'src/_mock/account';
 import Logo from 'src/components/logo';
 import Scrollbar from 'src/components/scrollbar';
 
+import NaverLogin from 'src/components/naver-login/naver-login';
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
 
@@ -57,6 +58,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {account.role}
+          <NaverLogin />
         </Typography>
       </Box>
     </Box>
@@ -110,7 +112,7 @@ export default function Nav({ openNav, onCloseNav }) {
     >
       <Logo sx={{ mt: 3, ml: 4, mb: 3 }} />
 
-      {/* {renderBanner} */}
+      {renderBanner}
 
       {renderMenu}
 
