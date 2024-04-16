@@ -10,17 +10,32 @@ const navConfig = [
   // {
   //   title: '대시보드',
   //   path: '/streamer-list',
-  //   icon: <Iconify icon="mdi-account-alert" sx={{ width: '100%', height: '100%' }} />,
+  //   icon: <Iconify icon="mdi-exclamation" sx={{ width: '100%', height: '100%' }} />,
   // },
   {
     title: '채널',
     path: '/streamer-list',
-    icon: icon('ic_analytics'),
+    icon: <Iconify icon="mdi-contacts" sx={{ width: '100%', height: '100%' }} />,
   },
   {
-    title: '치즈 봇',
+    title: '매크로',
     path: '/cheesebot',
-    icon: icon('ic_user'),
+    icon: <Iconify icon="mdi-exclamation" sx={{ width: '100%', height: '100%' }} />,
+  },
+  {
+    title: '투표',
+    path: '/cheesebot',
+    icon: <Iconify icon="mdi-exclamation" sx={{ width: '100%', height: '100%' }} />,
+  },
+  {
+    title: '미션',
+    path: '/cheesebot',
+    icon: <Iconify icon="mdi-exclamation" sx={{ width: '100%', height: '100%' }} />,
+  },
+  {
+    title: '룰렛',
+    path: '/cheesebot',
+    icon: <Iconify icon="mdi-exclamation" sx={{ width: '100%', height: '100%' }} />,
   },
   // {
   //   title: '스트리머 게시판',
