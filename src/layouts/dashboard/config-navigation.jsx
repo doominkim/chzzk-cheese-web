@@ -7,11 +7,11 @@ const icon = (name) => (
 );
 
 const navConfig = [
-  {
-    title: '대시보드',
-    path: '/streamer-list',
-    icon: <Iconify icon="mdi-account-alert" sx={{ width: '100%', height: '100%' }} />,
-  },
+  // {
+  //   title: '대시보드',
+  //   path: '/streamer-list',
+  //   icon: <Iconify icon="mdi-account-alert" sx={{ width: '100%', height: '100%' }} />,
+  // },
   {
     title: '채널',
     path: '/streamer-list',

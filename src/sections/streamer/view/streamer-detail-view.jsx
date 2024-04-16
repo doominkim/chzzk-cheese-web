@@ -196,10 +196,10 @@ export default function StreamerDetailView() {
         <Grid xs={12}>
           <AppCalendar channelId={channelId} />
         </Grid>
-
+        {/* 
         <Grid xs={12} md={12} lg={12}>
           <StreamerProfileCard />
-        </Grid>
+        </Grid> */}
         {/* <Grid xs={12} md={6} lg={8}>
           <AppNewsUpdate
             title="방명록"
