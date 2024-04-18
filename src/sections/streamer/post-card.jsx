@@ -42,7 +42,7 @@ export default function PostCard({ post }) {
 
   const {
     channelDescription,
-    channelId,
+    uuid,
     channelImageUrl,
     channelName,
     follower,
@@ -51,11 +51,11 @@ export default function PostCard({ post }) {
   } = post;
 
   const moveChzzk = () => {
-    window.location.href = `https://chzzk.naver.com/live/${channelId}`;
+    window.location.href = `https://chzzk.naver.com/live/${uuid}`;
   };
 
   const handleClick = () => {
-    router.push(`/streamer-detail/${channelId}`);
+    router.push(`/streamer-detail/${uuid}`);
   };
 
   const renderAvatar = (

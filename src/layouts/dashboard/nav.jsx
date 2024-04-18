@@ -58,7 +58,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {account.role}
-          <NaverLogin />
+          {/* <NaverLogin /> */}
         </Typography>
       </Box>
     </Box>
@@ -112,7 +112,7 @@ export default function Nav({ openNav, onCloseNav }) {
     >
       <Logo sx={{ mt: 3, ml: 4, mb: 3 }} />
 
-      {renderBanner}
+      {/* {renderBanner} */}
 
       {renderMenu}
 
@@ -179,7 +179,7 @@ function NavItem({ item }) {
         typography: 'body2',
         color: 'text.secondary',
         textTransform: 'capitalize',
-        fontWeight: 'fontWeightMedium',
+        fontWeight: 800,
         ...(active && {
           color: 'primary.main',
           fontWeight: 'fontWeightSemiBold',
