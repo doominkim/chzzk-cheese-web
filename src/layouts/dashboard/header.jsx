@@ -13,6 +13,7 @@ import { bgBlur } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
 
+import NaverLogin from 'src/components/naver-login/naver-login';
 import Searchbar from './common/searchbar';
 import { NAV, HEADER } from './config-layout';
 import AccountPopover from './common/account-popover';
@@ -40,8 +41,9 @@ export default function Header({ onOpenNav }) {
 
       <Stack direction="row" alignItems="center" spacing={1}>
         {/* <LanguagePopover /> */}
-        <NotificationsPopover />
-        <AccountPopover />
+        {/* <NotificationsPopover />
+        <AccountPopover /> */}
+        <NaverLogin type={!lgUp ? 1 : 3} />
       </Stack>
     </>
   );
