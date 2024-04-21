@@ -22,22 +22,23 @@ export default function NaverLoginView() {
       console.log(params);
 
       try {
-        const my = await axios.get('https://openapi.naver.com/v1/nid/me', {
-          headers: {
-            Authorization: `Bearer ${params.access_token}`,
-          },
-        });
+        // const my = await axios.get('https://openapi.naver.com/v1/nid/me', {
+        //   headers: {
+        //     Authorization: `Bearer ${params.access_token}`,
+        //   },
+        // });
+        console.log(params.access_token);
 
-        console.log(my);
-
-        const response = await axios.post('http://localhost:3030/auth/naverLogin', params);
+        const response = await axios.post(
+          `http://localhost:3000/auth/login/naver?accessToken=${params.access_token}`
+        );
 
         if (response.data.status === 'failure') {
           if (response.data.errorCode === '502') {
             alert('치즈봇 계정으로 로그인 하세요');
           }
         }
-        window.location.href = '/'; // 인덱스 페이지로 이동
+        // window.location.href = '/'; // 인덱스 페이지로 이동
       } catch (error) {
         // console.error(error);
       }

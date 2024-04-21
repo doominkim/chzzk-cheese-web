@@ -4,25 +4,28 @@ import axios from 'axios';
 import { faker } from '@faker-js/faker';
 import { useParams } from 'react-router-dom';
 
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
-
+import Scrollbar from 'src/components/scrollbar';
 import Iconify from 'src/components/iconify';
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
-import AppTasks from '../app-tasks';
-import AppNewsUpdate from '../app-news-update';
+
+import { Box, Card, Typography, Container, CardHeader } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+
 import AppOrderTimeline from '../app-order-timeline';
-import AppCurrentVisits from '../app-current-visits';
-import AppWebsiteVisits from '../app-website-visits';
-import AppWidgetSummary from '../app-widget-summary';
-import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
-import AppConversionRates from '../app-conversion-rates';
 import AppCalendar from '../app-calendar';
-import StreamerProfileCard from '../streamer-profile-card';
 import StreamerDetailCard from '../streamer-detail-card';
+import DonationRank from '../donation-rank';
+import UserRank from '../user-rank';
+import DonationBoard from '../donation-board';
+
+// import AppTasks from '../app-tasks';
+// import AppNewsUpdate from '../app-news-update';
+// import AppCurrentVisits from '../app-current-visits';
+// import AppWebsiteVisits from '../app-website-visits';
+// import AppWidgetSummary from '../app-widget-summary';
+// import AppTrafficBySite from '../app-traffic-by-site';
+// import AppConversionRates from '../app-conversion-rates';
+// import StreamerProfileCard from '../streamer-profile-card';
 
 // ----------------------------------------------------------------------
 
@@ -42,7 +45,6 @@ export default function StreamerDetailView() {
         <Grid xs={12} md={4} lg={4}>
           <AppOrderTimeline title="최근 활동내역" channelId={channelId} />
         </Grid>
-
         {/* <Grid xs={12} md={6} lg={8}>
           <AppWebsiteVisits
             title="Website Visits"
@@ -84,7 +86,6 @@ export default function StreamerDetailView() {
             }}
           />
         </Grid>
-
         <Grid xs={12} md={6} lg={4}>
           <AppCurrentVisits
             title="Current Visits"
@@ -97,8 +98,7 @@ export default function StreamerDetailView() {
               ],
             }}
           />
-        </Grid> */}
-
+        </Grid>{' '} */}
         {/* <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
             title="가장 많은 채팅패턴"
@@ -115,7 +115,6 @@ export default function StreamerDetailView() {
             }}
           />
         </Grid> */}
-
         <Grid xs={12} md={12} lg={4}>
           <AppCurrentSubject
             channelId={channelId}
@@ -138,6 +137,15 @@ export default function StreamerDetailView() {
             }}
           />
         </Grid>
+        <Grid xs={12} md={12} lg={8}>
+          <DonationBoard channelId={channelId} />
+        </Grid>
+        <Grid xs={12} md={12} lg={4}>
+          <DonationRank channelId={channelId} />
+        </Grid>
+        {/* <Grid xs={12} md={12} lg={4}>
+          <UserRank channelId={channelId} />
+        </Grid> */}
         {/* 
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
@@ -192,7 +200,6 @@ export default function StreamerDetailView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
         </Grid> */}
-
         <Grid xs={12}>
           <AppCalendar channelId={channelId} />
         </Grid>
