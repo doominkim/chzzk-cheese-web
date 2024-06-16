@@ -27,7 +27,7 @@ const NaverLogin = forwardRef(({ type }) => {
       {/* 로그인 버튼 요청 URI
         https://nid.naver.com/oauth2.0/authorize?response_type=token&client_id="************";&state=74075dc6-cfeb-40f9-87c5-d144e34a3983&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2FnaverLogin&version=js-2.0.0&svctype=1
         응답
-        http://localhost:3000/auth/naverLogin#access_token=AAAAOJVd5J9VsZr4FoB************&state=74075dc6-cfeb-40f9-87c5-d144e34a3983&token_type=bearer&expires_in=3600 */}
+        http://52.78.41.110/auth/naverLogin#access_token=AAAAOJVd5J9VsZr4FoB************&state=74075dc6-cfeb-40f9-87c5-d144e34a3983&token_type=bearer&expires_in=3600 */}
       <div id="naverIdLogin" />
     </>
   );

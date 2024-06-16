@@ -26,7 +26,7 @@ export default function DonationBoard({ channelId }) {
       const query = `?uuid=${channelId}&fromCreatedAt=${from}&toCreatedAt=${to}`;
 
       await axios
-        .get(`http://localhost:3000/channel/dashboard/donations${query}`)
+        .get(`http://52.78.41.110/channel/dashboard/donations${query}`)
         .then((response) => response.data)
         .then((data) => setList(data));
     };

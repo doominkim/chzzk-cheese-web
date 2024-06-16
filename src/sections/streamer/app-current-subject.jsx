@@ -35,7 +35,7 @@ export default function AppCurrentSubject({ title, subheader, channelId, chart, 
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:3000/channel/${channelId}/liveCategoryRank`)
+        .get(`http://52.78.41.110/channel/${channelId}/liveCategoryRank`)
         .then((response) => response.data)
         .then((data) => setRanks(data));
     };

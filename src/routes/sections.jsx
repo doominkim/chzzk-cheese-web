@@ -26,10 +26,10 @@ export default function Router() {
         </DashboardLayout>
       ),
       children: [
-        { element: <IndexPage />, index: true },
-        { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { element: <StreamerListPage />, index: true },
+        // { path: 'user', element: <UserPage /> },
+        // { path: 'products', element: <ProductsPage /> },
+        // { path: 'blog', element: <BlogPage /> },
         { path: 'streamer-list', element: <StreamerListPage /> },
         { path: 'streamer-detail/:channelId', element: <StreamerDetailPage /> },
         { path: 'auth/naverLogin', element: <NaverLoginView /> },
