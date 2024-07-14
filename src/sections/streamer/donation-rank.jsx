@@ -33,7 +33,7 @@ export default function DonationRank({ channelId }) {
     fetchData();
   }, [channelId]);
 
-  console.log(list);
+  // console.log(list);
 
   return (
     <Card>

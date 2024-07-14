@@ -22,8 +22,6 @@ export default function UserRank({ channelId }) {
     fetchData();
   }, [channelId]);
 
-  console.log(list);
-
   return (
     <Card>
       <CardHeader title="1" />

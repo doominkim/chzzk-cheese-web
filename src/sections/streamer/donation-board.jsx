@@ -31,7 +31,7 @@ export default function DonationBoard({ channelId }) {
         .then((data) => setList(data));
     };
 
-    const intervalId = setInterval(fetchData, 5000);
+    const intervalId = setInterval(fetchData, 30000);
     return () => clearInterval(intervalId);
   }, [channelId]);
 

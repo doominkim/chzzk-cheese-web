@@ -5,23 +5,9 @@ import PropTypes from 'prop-types';
 import Iconify from 'src/components/iconify';
 import { fShortenNumber } from 'src/utils/format-number';
 
-import {
-  Container,
-  Card,
-  CardHeader,
-  Divider,
-  Grid,
-  Box,
-  Avatar,
-  Button,
-  Stack,
-  Link,
-  Typography,
-  Chip,
-} from '@mui/material';
+import { Card, Grid, Box, Avatar, Stack, Link, Typography } from '@mui/material';
 import SvgColor from 'src/components/svg-color';
 import { alpha } from '@mui/material/styles';
-import AppCurrentSubject from './app-current-subject';
 
 export default function StreamerDetailCard({ channelId }) {
   const [channel, setChannel] = useState({});

@@ -14,6 +14,7 @@ import AppOrderTimeline from '../app-order-timeline';
 import AppCurrentSubject from '../app-current-subject';
 import AppCalendar from '../app-calendar';
 import StreamerDetailCard from '../streamer-detail-card';
+import StreamerPlayer from '../streamer-player';
 import DonationRank from '../donation-rank';
 import UserRank from '../user-rank';
 import DonationBoard from '../donation-board';
@@ -24,7 +25,7 @@ import DonationBoard from '../donation-board';
 // import AppWebsiteVisits from '../app-website-visits';
 // import AppWidgetSummary from '../app-widget-summary';
 // import AppTrafficBySite from '../app-traffic-by-site';
-// import AppConversionRates from '../app-conversion-rates';
+import AppConversionRates from '../app-conversion-rates';
 // import StreamerProfileCard from '../streamer-profile-card';
 
 // ----------------------------------------------------------------------
@@ -39,6 +40,9 @@ export default function StreamerDetailView() {
       </Typography>
 
       <Grid container spacing={3}>
+        <Grid xs={12} md={12} lg={12}>
+          <StreamerPlayer channelId={channelId} />
+        </Grid>
         <Grid xs={12} md={8} lg={4}>
           <StreamerDetailCard channelId={channelId} />
         </Grid>
@@ -99,22 +103,6 @@ export default function StreamerDetailView() {
             }}
           />
         </Grid>{' '} */}
-        {/* <Grid xs={12} md={6} lg={8}>
-          <AppConversionRates
-            title="가장 많은 채팅패턴"
-            subheader="2024-01-01 ~ 2024-04-01"
-            chart={{
-              series: [
-                { label: 'ㄸㅇ', value: 400 },
-                { label: '^^7', value: 430 },
-                { label: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ', value: 690 },
-                { label: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ', value: 1100 },
-                { label: 'ㄹㅇㅋㅋ', value: 1200 },
-                { label: 'ㄸㅇ', value: 1380 },
-              ],
-            }}
-          />
-        </Grid> */}
         <Grid xs={12} md={12} lg={4}>
           <AppCurrentSubject
             channelId={channelId}
@@ -137,6 +125,22 @@ export default function StreamerDetailView() {
             }}
           />
         </Grid>
+        <Grid xs={12} md={6} lg={8}>
+          <AppConversionRates
+            title="오늘 가장 많은 채팅패턴"
+            // subheader="2024-01-01 ~ 2024-04-01"
+            chart={{
+              series: [
+                { label: 'ㄸㅇ', value: 400 },
+                { label: '^^7', value: 430 },
+                { label: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ', value: 690 },
+                { label: 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ', value: 1100 },
+                { label: 'ㄹㅇㅋㅋ', value: 1200 },
+                { label: 'ㄸㅇ', value: 1380 },
+              ],
+            }}
+          />
+        </Grid>
         <Grid xs={12} md={12} lg={8}>
           <DonationBoard channelId={channelId} />
         </Grid>
@@ -155,7 +159,6 @@ export default function StreamerDetailView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
         </Grid>
-
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
             title="총 방송시간"
@@ -164,7 +167,6 @@ export default function StreamerDetailView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
         </Grid>
-
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
             title="총 방송시간"
@@ -173,7 +175,6 @@ export default function StreamerDetailView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
         </Grid>
-
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
             title="최근 방송일"
@@ -182,7 +183,6 @@ export default function StreamerDetailView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
         </Grid>
-
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
             title="최대 방송시간"
@@ -191,7 +191,6 @@ export default function StreamerDetailView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
           />
         </Grid>
-
         <Grid xs={12} sm={2} md={2}>
           <AppWidgetSummary
             title="평균 방송시간"
@@ -199,7 +198,8 @@ export default function StreamerDetailView() {
             color="error"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
-        </Grid> */}
+        </Grid>{' '}
+        */}
         <Grid xs={12}>
           <AppCalendar channelId={channelId} />
         </Grid>
