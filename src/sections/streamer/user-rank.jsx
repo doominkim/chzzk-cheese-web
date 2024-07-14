@@ -15,7 +15,7 @@ export default function UserRank({ channelId }) {
       const query = `?uuid=${channelId}&fromCreatedAt=${from}&toCreatedAt=${to}`;
 
       await axios
-        .get(`http://localhost:3000/api/channel/dashboard/userRank${query}`)
+        .get(`http://52.78.41.110/api/channel/dashboard/userRank${query}`)
         .then((response) => response.data)
         .then((data) => setList(data));
     };

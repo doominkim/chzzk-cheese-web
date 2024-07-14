@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const NaverLogin = forwardRef(({ type }) => {
   const { naver } = window;
   const NAVER_CLIENT_ID = '1VlPoypxb0OF82jiTVO6'; // 발급 받은 Client ID 입력
-  const NAVER_CALLBACK_URL = 'http://localhost:3000:3030/auth/naverLogin'; // 작성했던 Callback URL 입력
+  const NAVER_CALLBACK_URL = 'http://52.78.41.110:3030/auth/naverLogin'; // 작성했던 Callback URL 입력
 
   // 네이버 로그인 기능 및 버튼 구현
   const naverLogin = new naver.LoginWithNaverId({
@@ -27,7 +27,7 @@ const NaverLogin = forwardRef(({ type }) => {
       {/* 로그인 버튼 요청 URI
         https://nid.naver.com/oauth2.0/authorize?response_type=token&client_id="************";&state=74075dc6-cfeb-40f9-87c5-d144e34a3983&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2FnaverLogin&version=js-2.0.0&svctype=1
         응답
-        http://localhost:3000/api/auth/naverLogin#access_token=AAAAOJVd5J9VsZr4FoB************&state=74075dc6-cfeb-40f9-87c5-d144e34a3983&token_type=bearer&expires_in=3600 */}
+        http://52.78.41.110/api/auth/naverLogin#access_token=AAAAOJVd5J9VsZr4FoB************&state=74075dc6-cfeb-40f9-87c5-d144e34a3983&token_type=bearer&expires_in=3600 */}
       <div id="naverIdLogin" />
     </>
   );

@@ -15,7 +15,7 @@ export default function AppCalendar({ title, subheader, channelId }) {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:3000/api/channel/${channelId}/calendar`)
+        .get(`http://52.78.41.110/api/channel/${channelId}/calendar`)
         .then((response) => response.data)
         .then((data) => setList(data));
     };

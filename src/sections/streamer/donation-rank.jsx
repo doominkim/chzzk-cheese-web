@@ -26,7 +26,7 @@ export default function DonationRank({ channelId }) {
       const query = `?uuid=${channelId}&fromCreatedAt=${from}&toCreatedAt=${to}`;
 
       await axios
-        .get(`http://localhost:3000/api/channel/dashboard/donationRank${query}`)
+        .get(`http://52.78.41.110/api/channel/dashboard/donationRank${query}`)
         .then((response) => response.data)
         .then((data) => setList(data));
     };

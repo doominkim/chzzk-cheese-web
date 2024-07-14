@@ -10,7 +10,7 @@ export default function NaverLoginView() {
       // URL의 해시 부분에서 query parameter들을 추출합니다. 이 값들은 access_token, state, token_type, expires_in과 같은 인증 관련 정보를 포함합니다.
       const queryParams = window.location.hash.substring(1).split('&');
       const params = {};
-      // console.log(window.location); //Location {ancestorOrigins: DOMStringList, href: 'http://localhost:3000/api/auth/naverLogin#access_token…57-eb93287b5f70&token_type=bearer&expires_in=3600', origin: 'http://localhost:3000/api', protocol: 'http:', host: 'localhost:3000/api', …}
+      // console.log(window.location); //Location {ancestorOrigins: DOMStringList, href: 'http://52.78.41.110/api/auth/naverLogin#access_token…57-eb93287b5f70&token_type=bearer&expires_in=3600', origin: 'http://52.78.41.110/api', protocol: 'http:', host: '52.78.41.110/api', …}
       // console.log(window.location.hash); //#access_token=AAAAOJ2B7*************&state=4b53e1ff-4b37-44f4-b857-eb93287b5f70&token_type=bearer&expires_in=3600
       // console.log(queryParams); //['access_token=AAAAOJ2B7*************', 'state=4b53e1ff-4b37-44f4-b857-eb93287b5f70', 'token_type=bearer', 'expires_in=3600']
 
@@ -30,7 +30,7 @@ export default function NaverLoginView() {
         console.log(params.access_token);
 
         const response = await axios.post(
-          `http://localhost:3000/api/auth/login/naver?accessToken=${params.access_token}`
+          `http://52.78.41.110/api/auth/login/naver?accessToken=${params.access_token}`
         );
 
         if (response.data.status === 'failure') {

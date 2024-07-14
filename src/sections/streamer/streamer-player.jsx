@@ -13,7 +13,7 @@ export default function StreamerPlayer({ channelId }) {
   useEffect(() => {
     const liveDetail = async () => {
       await axios
-        .get(`http://localhost:3000/api/chzzk/channel/${channelId}/liveDetail`)
+        .get(`http://52.78.41.110/api/chzzk/channel/${channelId}/liveDetail`)
         .then((response) => response.data)
         .then((data) => setDetail(data));
     };
