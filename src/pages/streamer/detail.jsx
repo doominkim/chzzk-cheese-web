@@ -7,7 +7,7 @@ export default function StreamerBoardDetailPage() {
   return (
     <>
       <Helmet>
-        <title> Streamer | Minimal UI </title>
+        <title> Streamer </title>
       </Helmet>
 
       <StreamerDetailView />

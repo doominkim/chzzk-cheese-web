@@ -29,7 +29,7 @@ export default function StreamerDetailCard({ channelId }) {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://52.78.41.110/api/channel/${channelId}`)
+        .get(`http://localhost:3000/api/channel/${channelId}`)
         .then((response) => response.data)
         .then((data) => setChannel(data));
     };

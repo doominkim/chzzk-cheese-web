@@ -43,7 +43,7 @@ export default function Header({ onOpenNav }) {
         {/* <LanguagePopover /> */}
         {/* <NotificationsPopover />
         <AccountPopover /> */}
-        <NaverLogin type={!lgUp ? 1 : 3} />
+        {/* <NaverLogin type={!lgUp ? 1 : 3} /> */}
       </Stack>
     </>
   );

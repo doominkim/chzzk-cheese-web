@@ -26,7 +26,7 @@ export default function StreamerListView() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get('http://52.78.41.110/api/channel')
+        .get('http://localhost:3000/api/channel')
         .then((response) => response.data)
         .then((data) => setChannels(data));
     };
@@ -37,20 +37,20 @@ export default function StreamerListView() {
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4">채널</Typography>
-
+        {/* 
         <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
           스트리머 등록
-        </Button>
+        </Button> */}
       </Stack>
 
       <Stack mb={3} direction="row" alignItems="center" justifyContent="space-between">
-        <PostSearch posts={channels} />
-        <PostSort
+        {/* <PostSearch posts={channels} /> */}
+        {/* <PostSort
           options={[
             { value: 'latest', label: '팔로워순' },
             { value: 'popular', label: '인기순' },
           ]}
-        />
+        /> */}
       </Stack>
 
       <Grid container spacing={3}>
